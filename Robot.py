@@ -46,27 +46,27 @@ class Robot():
 
         self.servos = ax12.Ax12()
 
-        # motorConfigPath = 'data/motorConfig.json'
-        # motorList = None
-        #
-        # if not resetId:
-        #     try:
-        #         with open(motorConfigPath, 'r') as infile:
-        #             motorList = json.loads(json.load(infile))
-        #     except FileNotFoundError:
-        #         print("Cannot find %s" % motorConfigPath)
-        #
-        # if motorList == None:
-        #     self.scan(minId, maxId)
-        #     with open(motorConfigPath, 'w') as outfile:
-        #         json.dump(json.dumps(self.getId()), outfile)
-        #     print("saved motor id to %s succesfully as:" % motorConfigPath)
-        #     print(self.getId())
+        motorConfigPath = 'data/motorConfig.json'
+        motorList = None
+
+        if not resetId:
+            try:
+                with open(motorConfigPath, 'r') as infile:
+                    motorList = json.loads(json.load(infile))
+            except FileNotFoundError:
+                print("Cannot find %s" % motorConfigPath)
+
+        if motorList == None:
+            # self.scan(minId, maxId)
+            with open(motorConfigPath, 'w') as outfile:
+                json.dump(json.dumps(self.getId()), outfile)
+            print("saved motor id to %s succesfully as:" % motorConfigPath)
+            print(self.getId())
         # else:
         #     for i in motorList:
         #         temp = dynamixel.Dynamixel(i, self.net)
         #         self.net._dynamixel_map[i] = temp
-        #     print("finished scanning..")
+            print("finished scanning..")
 
     # once we call start Alive is True
     # def start(self):
@@ -90,13 +90,13 @@ class Robot():
         servoList = []
         for i in range(minId, maxId + 1):
             try :
-                temp = self.ping(i)
+                temp = self.servos.ping(i)
                 servoList.append(i)
-                if verbose: print "Found servo #" + str(i)
+                #if verbose: print "Found servo #" + str(i)
                 time.sleep(0.1)
 
-            except Exception, detail:
-                if verbose : print "Error pinging servo #" + str(i) + ': ' + str(detail)
+            except Exception:
+                #if verbose : print "Error pinging servo #" + str(i) + ': ' + str(detail)
                 pass
         return servoList
 
@@ -107,16 +107,23 @@ class Robot():
         return {i : self.readPosition(i) for i in self.getId()}
 
     def setTorque(self, val=True):
-        for i in self.net.get_dynamixels():
-            i.torque_enable = val
+        for i in self.getId():
+            self.servos.setTorqueStatus(i, val)
 
     def moveMotor(self, servoId=1, val=512, spd=120):
-        for i in self.net.get_dynamixels():
-            if i.id == servoId:
-                toMove = i
-        toMove.goal_position = val
-        toMove.moving_speed = spd
-        self.net.synchronize()
+        # for i in self.net.get_dynamixels():
+        #     if i.id == servoId:
+        #         toMove = i
+        # toMove.goal_position = val
+        # toMove.moving_speed = spd
+        # self.net.synchronize()
+        self.servos.moveSpeed(servoId, val, spd)
+
+    def moveMotorReg(self, servoId=1, val=512, spd=120):
+        self.servos.moveSpeedRW(servoId, val, spd)
+
+    def RegAction(self):
+        self.servos.action();
 
 #     @pyqtSlot("pyqt_PyObject")
     def doAction(self, toBeDoneAction):
@@ -125,18 +132,31 @@ class Robot():
                 while self.isRobotMoving():
                     waiting = True
                 for servoId, servoPos in step.pos.items():
-                    for servo in self.net.get_dynamixels():
-                        if servo.id == int(servoId):
-                            servo.goal_position = int(servoPos)
-                            servo.moving_speed = int(step.speed)
-                    self.net.synchronize()
+                    # for servo in self.net.get_dynamixels():
+                    #     if servo.id == :
+                            # servo.goal_position = int(servoPos)
+                            # servo.moving_speed = int(step.speed)
+                    self.moveMotorReg(int(servoId), int(servoPos), int(step.speed))
+                self.RegAction()
                 print("moving step", step.nth)
 
-    def isRobotMoving(self):
-        for i in self.net.get_dynamixels():
-            if i.moving == True:
+    def isRobotMoving(self, servoId=None):
+        if servoId != None:
+            if self.servos.readMovingStatus(servoId) == 1:
                 return True
-        return False
+            else:
+                return False
+        else:
+            for i in self.getId():
+                if self.servos.readMovingStatus(i) == 1:
+                    return True
+            return False
+
+        # for i in self.net.get_dynamixels():
+        #     if i.moving == True:
+        #         return True
+
+            # return self.servos.readMovingStatus(i)
 
     def createAction(self, actionName=None):
         if actionName == None:

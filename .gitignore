@@ -97,3 +97,7 @@ ENV/
 ### IPythonNotebook ###
 # Temporary data
 .ipynb_checkpoints/
+
+# custom
+example/
+
