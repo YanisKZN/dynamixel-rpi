@@ -16,7 +16,7 @@ while counter != -1:
             s.moveMotorReg(i, over, 90)
         else:
             s.moveMotorReg(i, less, 90)
-            
+
     while s.isRobotMoving():
         pass
     s.RegAction()

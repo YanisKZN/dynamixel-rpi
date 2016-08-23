@@ -241,16 +241,16 @@ class ActionList:
         except KeyError:
             print("There is no action '%s', removed nothing.." % actName)
 
-    def to_JSON(self, filename='data/fahsaiActions.json'):
+    def to_JSON(self, filename='data/demoRobotActions.json'):
         try:
             with open(filename, 'w') as outfile:
-                json.dump(jsonpickle.encode(self), outfile)
+                json.dump(json.loads(jsonpickle.encode(self)), outfile)
         except FileNotFoundError:
             print("Cannot find %s" % filename)
 
-    def from_JSON(self, filename='data/fahsaiActions.json'):
+    def from_JSON(self, filename='data/demoRobotActions.json'):
         try:
             with open(filename, 'r') as infile:
-                self.actionCollection = jsonpickle.decode(json.load(infile)).actionCollection
+                self.actionCollection = jsonpickle.decode(json.dumps(json.load(infile))).actionCollection
         except FileNotFoundError:
             print("Cannot find %s" % filename)

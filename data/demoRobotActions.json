@@ -1,0 +1,221 @@
+{
+    "actionCollection": {
+        "twist": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 427,
+                    "15": 471,
+                    "16": 339,
+                    "18": 568,
+                    "14": 709,
+                    "17": 835
+                },
+                "timegap": 0
+            }],
+            "actionName": "twist",
+            "py/object": "Robot.Action"
+        },
+        "standup": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 120,
+                "pos": {
+                    "13": 511,
+                    "15": 812,
+                    "16": 515,
+                    "18": 511,
+                    "14": 211,
+                    "17": 514
+                },
+                "timegap": 0
+            }],
+            "actionName": "standup",
+            "py/object": "Robot.Action"
+        },
+        "xpos": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 514,
+                    "15": 338,
+                    "16": 508,
+                    "18": 326,
+                    "14": 669,
+                    "17": 687
+                },
+                "timegap": 0
+            }],
+            "actionName": "xpos",
+            "py/object": "Robot.Action"
+        },
+        "neck_L": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 633,
+                    "15": 790,
+                    "16": 493,
+                    "18": 247,
+                    "14": 228,
+                    "17": 529
+                },
+                "timegap": 0
+            }],
+            "actionName": "neck_L",
+            "py/object": "Robot.Action"
+        },
+        "standby": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 522,
+                    "15": 516,
+                    "16": 509,
+                    "18": 509,
+                    "14": 506,
+                    "17": 513
+                },
+                "timegap": 0
+            }],
+            "actionName": "standby",
+            "py/object": "Robot.Action"
+        },
+        "correct": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 616,
+                    "15": 398,
+                    "16": 500,
+                    "18": 265,
+                    "14": 611,
+                    "17": 414
+                },
+                "timegap": 0
+            }],
+            "actionName": "correct",
+            "py/object": "Robot.Action"
+        },
+        "neck_R": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 411,
+                    "15": 781,
+                    "16": 494,
+                    "18": 487,
+                    "14": 225,
+                    "17": 754
+                },
+                "timegap": 0
+            }],
+            "actionName": "neck_R",
+            "py/object": "Robot.Action"
+        },
+        "correct2": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 451,
+                    "15": 711,
+                    "16": 500,
+                    "18": 559,
+                    "14": 722,
+                    "17": 723
+                },
+                "timegap": 0
+            }],
+            "actionName": "correct2",
+            "py/object": "Robot.Action"
+        },
+        "twist2": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 599,
+                    "15": 641,
+                    "16": 638,
+                    "18": 263,
+                    "14": 560,
+                    "17": 457
+                },
+                "timegap": 0
+            }],
+            "actionName": "twist2",
+            "py/object": "Robot.Action"
+        },
+        "raise_twist_L": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 518,
+                    "15": 310,
+                    "16": 634,
+                    "18": 509,
+                    "14": 712,
+                    "17": 514
+                },
+                "timegap": 0
+            }],
+            "actionName": "raise_twist_L",
+            "py/object": "Robot.Action"
+        },
+        "raise": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 522,
+                    "15": 310,
+                    "16": 513,
+                    "18": 509,
+                    "14": 713,
+                    "17": 514
+                },
+                "timegap": 0
+            }],
+            "actionName": "raise",
+            "py/object": "Robot.Action"
+        },
+        "raise_twist_R": {
+            "action": [{
+                "nth": 1,
+                "py/object": "Robot.Step",
+                "speed": 90,
+                "pos": {
+                    "13": 517,
+                    "15": 310,
+                    "16": 397,
+                    "18": 509,
+                    "14": 706,
+                    "17": 514
+                },
+                "timegap": 0
+            }],
+            "actionName": "raise_twist_R",
+            "py/object": "Robot.Action"
+        }
+    },
+    "py/object": "Robot.ActionList"
+}
